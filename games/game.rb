@@ -1,7 +1,7 @@
 require 'date'
 require '../item'
 class Game < Item
-  def initialize(multiplayer, last_played_at)
+  def initialize(multiplayer, last_played_at, publish_date)
     super(publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
