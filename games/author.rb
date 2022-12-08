@@ -3,7 +3,7 @@ class Author
   attr_reader :item
 
   def initialize(first_name, last_name)
-    @id = Random.rand(1...1000)
+    @id = Random.rand(1...10_000)
     @first_name = first_name
     @last_name = last_name
     @item = []
@@ -11,6 +11,6 @@ class Author
 
   def add_item(item)
     @item << item
-    item.author = self
+    item.add_author(self)
   end
 end
