@@ -22,3 +22,5 @@ class MusicAlbum < Item
     super && @on_spotify
   end
 end
+
+# Just a comment to be deleted (@SaeqaSultani)
