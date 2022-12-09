@@ -24,3 +24,5 @@ describe Author do
     expect(@game.author).to eq(@author)
   end
 end
+
+# Just a comment to be deleted (@Tommymarvel)
