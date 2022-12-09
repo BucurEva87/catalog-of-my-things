@@ -86,7 +86,7 @@ end
 def add_movie
   clear_terminal
   silent = add_movie_silent
-  publish_date = add_music_album_publish_date
+  publish_date = add_movie_publish_date
   puts 'Terrific! Let\'s associate a source to this movie!'
   name = add_source_name
 
