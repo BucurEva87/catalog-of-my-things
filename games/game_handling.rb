@@ -59,3 +59,5 @@ def add_author_last_name
   end
   last_name
 end
+
+# Just a comment to be deleted (@Tommymarvel)
