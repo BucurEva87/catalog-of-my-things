@@ -41,3 +41,5 @@ describe Game do
     expect(@game.send(:can_be_archived?)).to eq(true)
   end
 end
+
+# Just a comment to be deleted (@Tommymarvel)
