@@ -1,17 +1,16 @@
-Create table game(
-    id int generated always as identity
-    multiplayer varchar(500) not null
-    last_played date not null
-    publish_date date 
-    can_be_archived boolean
-    author_id int
-    primary key (id)
-    foreign key (author_id) references author (id)
-)
+CREATE TABLE IF NOT EXISTS authors (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    game_id INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (game_id) REFERENCES games (id)
+);
 
-create table author(
-    id int generated always as identity
-    first_name varchar(500)
-    last_name varchar(500)
-    primary key (id)
-)
+CREATE TABLE IF NOT EXISTS games (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    multiplayer BOOLEAN NOT NULL,
+    last_played DATE NOT NULL,
+    publish_date DATE NOT NULL,
+    PRIMARY KEY (id)
+);

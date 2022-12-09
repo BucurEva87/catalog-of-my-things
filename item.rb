@@ -1,8 +1,8 @@
 require 'date'
 
 class Item
-  attr_writer :publish_date
-  attr_reader :archived
+  attr_reader :genre, :author, :source, :label, :publish_date
+  attr_writer :id
 
   def initialize(publish_date)
     @id = rand(1...10_000)
@@ -10,9 +10,8 @@ class Item
     @archived = false
   end
 
-  def genre=(genre)
+  def add_genre(genre)
     @genre = genre
-    genre.items << self unless genre.items.include?(self)
   end
 
   def add_author(author)

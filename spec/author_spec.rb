@@ -1,16 +1,26 @@
-require './games/author'
+require_relative '../games/game'
+require_relative '../games/author'
 
 describe Author do
-  it 'instance of author' do
-    auth = Author.new('Marvellous', 'ibironke')
-    expect(auth).to be_an_instance_of Author
+  before(:each) do
+    @author = Author.new('Marvellous', 'ibironke')
   end
-  it 'first_name equals' do
-    auth = Author.new('Marvellous', 'ibironke')
-    expect(auth.first_name).to eq('Marvellous')
+
+  it 'creates a new instance of the Author class' do
+    expect(@author).to be_an_instance_of Author
   end
-  it 'last_name equals' do
-    auth = Author.new('Marvellous', 'ibironke')
-    expect(auth.last_name).to eq('ibironke')
+
+  it 'properly sets first_name value' do
+    expect(@author.first_name).to eq('Marvellous')
+  end
+
+  it 'properly sets last_name value' do
+    expect(@author.last_name).to eq('ibironke')
+  end
+
+  it 'properly adds the current author object as the author associated to the added item' do
+    @game = Book.new(false, Time.now.year, Time.now.year)
+    @author.add_item(@game)
+    expect(@game.author).to eq(@author)
   end
 end
