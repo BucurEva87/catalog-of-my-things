@@ -14,5 +14,3 @@ CREATE TABLE IF NOT EXISTS games (
     publish_date DATE NOT NULL,
     PRIMARY KEY (id)
 );
-
--- Just a comment to be deleted (@Tommymarvel)
