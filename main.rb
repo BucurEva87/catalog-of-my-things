@@ -1,12 +1,13 @@
-# require_relative 'app'
+require_relative './app'
 
-# @app = App.new
+@app = App.new
 
 def menu
   clear_terminal
   print 'Welcome to your catalog of things! Please choose one of the following actions:
     1. Let\'s welcome our visitor
-    2. Exit
+    2. Game
+    3. Exit
     Your choice: '
 end
 
@@ -15,6 +16,8 @@ def process_input
   when 1
     puts 'Welcome, visitor!'
   when 2
+    @app.games
+  when 3
     puts 'I bid you farewell!'
     pause
     clear_terminal
