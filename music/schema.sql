@@ -12,3 +12,5 @@ CREATE TABLE IF NOT EXISTS music_albums (
     publish_date DATE NOT NULL,
     PRIMARY KEY (id)
 );
+
+-- Just a comment to be deleted (@SaeqaSultani)

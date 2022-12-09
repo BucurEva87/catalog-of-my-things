@@ -20,3 +20,5 @@ describe Genre do
     expect(@music.genre).to eq(@genre)
   end
 end
+
+# Just a comment to be deleted (@SaeqaSultani)
