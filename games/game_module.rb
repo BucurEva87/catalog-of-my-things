@@ -44,14 +44,13 @@ module GameModule
       puts "Total authors:#{@games.count}"
       @games.each_with_index do |game, index|
         game = JSON.parse(game, create_additions: true)
-        puts " #{index + 1}). #{game.game['author']} #{game.game['authors']} published #{game.game['name']}"
+        puts " #{index + 1}). #{game.game['author']} #{game.game['authors']}"
       end
     end
     pause(5)
   end
 
-  def reload
-  end
+  def reload; end
 end
 
 def pause(time = 2)
