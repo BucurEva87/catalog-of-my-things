@@ -26,3 +26,5 @@ class Game < Item
     super && age > 2
   end
 end
+
+# Just a comment to be deleted (@Tommymarvel)
