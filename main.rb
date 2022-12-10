@@ -35,10 +35,10 @@ def process_input
   option = gets.chomp.to_i - 1
 
   if actions[option]
-    @app.add_book(*add_book) if actions[option] == 'add_book'
-    @app.add_game(*add_game) if actions[option] == 'add_game'
-    @app.add_music_album(*add_music_album) if actions[option] == 'add_music_album'
-    @app.add_movie(*add_movie) if actions[option] == 'add_movie'
+    @app.add_book(add_book) if actions[option] == 'add_book'
+    @app.add_game(add_game) if actions[option] == 'add_game'
+    @app.add_music_album(add_music_album) if actions[option] == 'add_music_album'
+    @app.add_movie(add_movie) if actions[option] == 'add_movie'
     @app.public_send(actions[option]) unless %w[add_book add_game add_music_album
                                                 add_movie].include?(actions[option])
     pause(2)
@@ -49,7 +49,7 @@ def process_input
   pause(2)
 end
 
-def get_all_info
+def procure_all_info
   puts 'Terrific! Let\'s associate a label to this item!'
   title = add_label_title
   color = add_label_color
@@ -70,7 +70,7 @@ def add_book
   cover_state = add_book_cover_state
   publish_date = add_book_publish_date
 
-  [publisher, cover_state, publish_date, *get_all_info]
+  [publisher, cover_state, publish_date, *procure_all_info]
 end
 
 def add_game
@@ -79,7 +79,7 @@ def add_game
   last_played_at = add_game_last_played_at
   publish_date = add_game_publish_date
 
-  [multiplayer, last_played_at, publish_date, *get_all_info]
+  [multiplayer, last_played_at, publish_date, *procure_all_info]
 end
 
 def add_music_album
@@ -87,7 +87,7 @@ def add_music_album
   on_spotify = add_music_album_on_spotify
   publish_date = add_music_album_publish_date
 
-  [on_spotify, publish_date, *get_all_info]
+  [on_spotify, publish_date, *procure_all_info]
 end
 
 def add_movie
@@ -95,7 +95,7 @@ def add_movie
   silent = add_movie_silent
   publish_date = add_movie_publish_date
 
-  [silent, publish_date, *get_all_info]
+  [silent, publish_date, *procure_all_info]
 end
 
 def main(status)
