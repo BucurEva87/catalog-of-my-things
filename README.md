@@ -17,13 +17,13 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     <!-- - [Key Features](#key-features) -->
-  <!-- - [🚀 Live Demo](#live-demo) -->
+  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
-  <!-- - [Prerequisites](#prerequisites) -->
+  - [Prerequisites](#prerequisites)
   <!-- - [Install](#install) -->
-  <!-- - [Usage](#usage) -->
-  <!-- - [Run tests](#run-tests) -->
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
   <!-- - [Deployment](#triangular_flag_on_post-deployment) -->
 - [👥 Authors](#authors)
 <!-- - [🔭 Future Features](#future-features) -->
@@ -73,15 +73,15 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-<!-- LIVE DEMO -->
+LIVE DEMO
 
-<!-- ## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
+> There is no live demo for this project, but here we have our video presentation link.
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Video presentation](https://streamable.com/ildfie)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -89,17 +89,14 @@
 
 > To get a local copy up and running, follow these steps.
 
-<!-- ### Prerequisites
+### Prerequisites
 
-In order to run this project you need: -->
-
-<!--
-Example command:
+In order to run this project you need:
 
 ```sh
- gem install rails
+ gem install colorize
+ gem install json
 ```
- -->
 
 ### Setup
 
@@ -123,29 +120,21 @@ Example command:
 ```
 --->
 
-<!-- ### Usage
+### Usage
 
-To run the project, execute the following command: -->
-
-<!--
-Example command:
+To run the project, execute the following command:
 
 ```sh
-  rails server
+  ruby main.rb
 ```
---->
 
-<!-- ### Run tests
+### Run tests
 
-To run tests, run the following command: -->
-
-<!--
-Example command:
+To run tests, run the following command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
+  rspec spec ./spec
 ```
---->
 
 <!-- ### Deployment
 
