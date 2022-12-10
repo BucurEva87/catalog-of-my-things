@@ -13,21 +13,20 @@
 
 # 📗 Table of Contents
 
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 Catalog of my things ](#-catalog-of-my-things-)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-  - [🚀 Live Demo ](#-live-demo-)
-  - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Usage](#usage)
-    - [Run tests](#run-tests)
-  - [👥 Authors ](#-authors-)
-  - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [📝 License ](#-license-)
-<!-- - [🔭 Future Features](#future-features) -->
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  <!-- - [Install](#install) -->
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  <!-- - [Deployment](#triangular_flag_on_post-deployment) -->
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 <!-- - [🙏 Acknowledgements](#acknowledgements) -->
@@ -64,17 +63,15 @@
 
 <!-- Features -->
 
-<!-- ### Key Features <a name="key-features"></a>
+### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+> Features of the application.
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Persists items in .json files]**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-LIVE DEMO
+<!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
@@ -174,6 +171,17 @@ Example:
 - GitHub: [@Tommy Marvel](https://github.com/Tommymarvel)
 - Twitter: [@Tomiwa Ibironke](https://twitter.com/tomiwa_ibironke)
 - LinkedIn: [Marvellous Ibironke](https://www.linkedin.com/in/marvellous-ibironke-54026b231/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+FUTURE FEATURES
+
+## 🔭 Future Features <a name="future-features"></a>
+
+> Features to be added.
+
+- More information about each item
+- SQL Database storage
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

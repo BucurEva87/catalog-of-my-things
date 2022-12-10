@@ -35,18 +35,33 @@ def process_input
   option = gets.chomp.to_i - 1
 
   if actions[option]
-    @app.add_book(*add_book) if actions[option] == 'add_book'
-    @app.add_game(*add_game) if actions[option] == 'add_game'
-    @app.add_music_album(*add_music_album) if actions[option] == 'add_music_album'
-    @app.add_movie(*add_movie) if actions[option] == 'add_movie'
+    @app.add_book(add_book) if actions[option] == 'add_book'
+    @app.add_game(add_game) if actions[option] == 'add_game'
+    @app.add_music_album(add_music_album) if actions[option] == 'add_music_album'
+    @app.add_movie(add_movie) if actions[option] == 'add_movie'
     @app.public_send(actions[option]) unless %w[add_book add_game add_music_album
                                                 add_movie].include?(actions[option])
-    pause
+    pause(2)
     return
   end
 
   puts 'I don\'t know how to handle your choice. Try choosing again!'.red
-  pause
+  pause(2)
+end
+
+def procure_all_info
+  puts 'Terrific! Let\'s associate a label to this item!'
+  title = add_label_title
+  color = add_label_color
+  puts 'Wonderful! Let\'s associate an author to this item!'
+  first_name = add_author_first_name
+  last_name = add_author_last_name
+  puts 'Outstanding! Let\'s associate a genre to this item!'
+  genre_name = add_genre_name
+  puts 'Excellent! Let\'s associate a source to this item!'
+  source_name = add_source_name
+
+  [title, color, first_name, last_name, genre_name, source_name]
 end
 
 def add_book
@@ -54,11 +69,8 @@ def add_book
   publisher = add_book_publisher
   cover_state = add_book_cover_state
   publish_date = add_book_publish_date
-  puts 'Terrific! Let\'s associate a label to this book!'
-  title = add_label_title
-  color = add_label_color
 
-  [publisher, cover_state, publish_date, title, color]
+  [publisher, cover_state, publish_date, *procure_all_info]
 end
 
 def add_game
@@ -66,31 +78,24 @@ def add_game
   multiplayer = add_game_multiplayer
   last_played_at = add_game_last_played_at
   publish_date = add_game_publish_date
-  puts 'Terrific! Let\'s associate an author to this game!'
-  first_name = add_author_first_name
-  last_name = add_author_last_name
 
-  [multiplayer, last_played_at, publish_date, first_name, last_name]
+  [multiplayer, last_played_at, publish_date, *procure_all_info]
 end
 
 def add_music_album
   clear_terminal
   on_spotify = add_music_album_on_spotify
   publish_date = add_music_album_publish_date
-  puts 'Terrific! Let\'s associate a genre to this music album!'
-  name = add_genre_name
 
-  [on_spotify, publish_date, name]
+  [on_spotify, publish_date, *procure_all_info]
 end
 
 def add_movie
   clear_terminal
   silent = add_movie_silent
   publish_date = add_movie_publish_date
-  puts 'Terrific! Let\'s associate a source to this movie!'
-  name = add_source_name
 
-  [silent, publish_date, name]
+  [silent, publish_date, *procure_all_info]
 end
 
 def main(status)

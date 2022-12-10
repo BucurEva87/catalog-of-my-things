@@ -12,7 +12,11 @@ class Movie < Item
     {
       JSON.create_id => self.class.name,
       'silent' => @silent,
-      'publish_date' => @publish_date
+      'publish_date' => @publish_date,
+      'label' => @label,
+      'author' => @author,
+      'genre' => @genre,
+      'source' => @source
     }.to_json(*args)
   end
 

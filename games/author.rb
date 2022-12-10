@@ -17,8 +17,7 @@ class Author
     {
       JSON.create_id => self.class.name,
       'first_name' => @first_name,
-      'last_name' => @last_name,
-      'items' => @items
+      'last_name' => @last_name
     }.to_json(*args)
   end
 end

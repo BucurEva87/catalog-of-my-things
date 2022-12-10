@@ -1,2 +1,0 @@
-{"json_class":"Label","title":"gift","color":"red","items":[{"json_class":"Book","publisher":"Bloomsbury","cover_state":"good","publish_date":"2022-12-1"},{"json_class":"Book","publisher":"mariaohi","cover_state":"bad","publish_date":"2022-12-21"}]}
-{"json_class":"Label","title":"fiction","color":"blue","items":[{"json_class":"Book","publisher":"Aramis","cover_state":"bad","publish_date":"2012-02-20"}]}

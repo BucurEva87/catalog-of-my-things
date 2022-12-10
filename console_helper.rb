@@ -1,4 +1,4 @@
-def pause(time = 2)
+def pause(time = 5)
   sleep time
 end
 
