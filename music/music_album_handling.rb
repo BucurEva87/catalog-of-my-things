@@ -34,5 +34,3 @@ def add_genre_name
   end
   name
 end
-
-# Just a comment to be deleted (@SaeqaSultani)

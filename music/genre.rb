@@ -20,5 +20,3 @@ class Genre
     }.to_json(*args)
   end
 end
-
-# Just a comment to be deleted (@SaeqaSultani)

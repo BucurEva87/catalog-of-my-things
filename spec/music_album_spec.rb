@@ -36,5 +36,3 @@ describe MusicAlbum do
     expect(@music_album.send(:can_be_archived?)).to eq(true)
   end
 end
-
-# Just a comment to be deleted (@SaeqaSultani)
