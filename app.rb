@@ -21,7 +21,7 @@ class App
     @movies = []
     @sources = []
     puts 'Loading data from local files...'.blue
-    pause
+    pause(2)
     list = { books: @books, labels: @labels, games: @games, authors: @authors, music_albums: @music_albums,
              genres: @genres, movies: @movies, sources: @sources }
     @loading = Loading.new(list)
@@ -53,7 +53,8 @@ class App
     end
   end
 
-  def add_book(publisher, cover_state, publish_date, title, color, first_name, last_name, genre_name, source_name)
+  def add_book(list)
+    publisher, cover_state, publish_date, title, color, first_name, last_name, genre_name, source_name = list
     @books << Book.new(publisher, cover_state, publish_date)
     @labels << Label.new(title, color)
     @authors << Author.new(first_name, last_name)
@@ -85,7 +86,8 @@ class App
     end
   end
 
-  def add_game(multiplayer, last_played_at, publish_date, title, color, first_name, last_name, genre_name, source_name)
+  def add_game(list)
+    multiplayer, last_played_at, publish_date, title, color, first_name, last_name, genre_name, source_name = list
     @games << Game.new(multiplayer, last_played_at, publish_date)
     @labels << Label.new(title, color)
     @authors << Author.new(first_name, last_name)
@@ -115,7 +117,8 @@ class App
     end
   end
 
-  def add_music_album(on_spotify, publish_date, title, color, first_name, last_name, genre_name, source_name)
+  def add_music_album(list)
+    on_spotify, publish_date, title, color, first_name, last_name, genre_name, source_name = list
     @music_albums << MusicAlbum.new(on_spotify, publish_date)
     @labels << Label.new(title, color)
     @authors << Author.new(first_name, last_name)
@@ -145,7 +148,8 @@ class App
     end
   end
 
-  def add_movie(silent, publish_date, title, color, first_name, last_name, genre_name, source_name)
+  def add_movie(list)
+    silent, publish_date, title, color, first_name, last_name, genre_name, source_name = list
     @movies << Movie.new(silent, publish_date)
     @labels << Label.new(title, color)
     @authors << Author.new(first_name, last_name)
@@ -170,4 +174,3 @@ class App
     exit(true)
   end
 end
-
