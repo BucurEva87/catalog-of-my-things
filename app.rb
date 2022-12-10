@@ -25,10 +25,10 @@ class App
     list = { books: @books, labels: @labels, games: @games, authors: @authors, music_albums: @music_albums,
              genres: @genres, movies: @movies, sources: @sources }
     @loading = Loading.new(list)
-    @loading.load_labels
-    @loading.load_authors
-    @loading.load_genres
-    @loading.load_sources
+    @loading.load_books
+    @loading.load_games
+    @loading.load_music_albums
+    @loading.load_movies
     puts 'Data loaded succesfully!'.green
     pause(1)
   end
@@ -53,10 +53,13 @@ class App
     end
   end
 
-  def add_book(publisher, cover_state, publish_date, title, color)
+  def add_book(publisher, cover_state, publish_date, title, color, first_name, last_name, genre_name, source_name)
     @books << Book.new(publisher, cover_state, publish_date)
     @labels << Label.new(title, color)
-    @labels.last.add_item(@books.last)
+    @authors << Author.new(first_name, last_name)
+    @genres << Genre.new(genre_name)
+    @sources << Source.new(source_name)
+    add_to_items(@books.last)
     puts 'The provided book was successfully added!'.green
     pause
   end
@@ -82,10 +85,13 @@ class App
     end
   end
 
-  def add_game(multiplayer, last_played_at, publish_date, first_name, last_name)
+  def add_game(multiplayer, last_played_at, publish_date, title, color, first_name, last_name, genre_name, source_name)
     @games << Game.new(multiplayer, last_played_at, publish_date)
+    @labels << Label.new(title, color)
     @authors << Author.new(first_name, last_name)
-    @authors.last.add_item(@games.last)
+    @genres << Genre.new(genre_name)
+    @sources << Source.new(source_name)
+    add_to_items(@games.last)
     puts 'The provided game was successfully added!'.green
   end
 
@@ -109,10 +115,13 @@ class App
     end
   end
 
-  def add_music_album(on_spotify, publish_date, name)
+  def add_music_album(on_spotify, publish_date, title, color, first_name, last_name, genre_name, source_name)
     @music_albums << MusicAlbum.new(on_spotify, publish_date)
-    @genres << Genre.new(name)
-    @genres.last.add_item(@music_albums.last)
+    @labels << Label.new(title, color)
+    @authors << Author.new(first_name, last_name)
+    @genres << Genre.new(genre_name)
+    @sources << Source.new(source_name)
+    add_to_items(@music_albums.last)
     puts 'The provided music album was successfully added!'.green
   end
 
@@ -136,11 +145,21 @@ class App
     end
   end
 
-  def add_movie(silent, publish_date, name)
+  def add_movie(silent, publish_date, title, color, first_name, last_name, genre_name, source_name)
     @movies << Movie.new(silent, publish_date)
-    @sources << Source.new(name)
-    @sources.last.add_item(@movies.last)
+    @labels << Label.new(title, color)
+    @authors << Author.new(first_name, last_name)
+    @genres << Genre.new(genre_name)
+    @sources << Source.new(source_name)
+    add_to_items(@movies.last)
     puts 'The provided movie was successfully added!'.green
+  end
+
+  def add_to_items(item)
+    @labels.last.add_item(item)
+    @authors.last.add_item(item)
+    @genres.last.add_item(item)
+    @sources.last.add_item(item)
   end
 
   def quit_app
@@ -151,3 +170,4 @@ class App
     exit(true)
   end
 end
+

@@ -21,76 +21,95 @@ class Loading
     @sources = list[:sources]
   end
 
-  def load_labels
-    return unless File.file?('labels.json')
+  def load_items
+    return unless File.file?('items.json')
 
-    f = File.new('labels.json', 'r')
-    f.readlines.each do |label|
-      data = JSON.parse(label)
-      @labels << Label.new(data['title'], data['color'])
-      data['items'].each do |item|
-        @books << Book.new(item['publisher'], item['cover_state'], item['publish_date'])
-        @labels.last.add_item(@books.last)
+    f = File.new('items.json', 'r')
+    f.readlines.each do |item|
+      data = JSON.parse(item)
+      case data['json_class']
+      when 'Book'
+        @books << Book.new(data['publisher'], data['cover_state'], data['publish_date'])
+      when 'Game'
+        @games << Game.new(data['multiplayer'], data['last_played_at'], data['publish_date'])
+      when 'MusicAlbum'
+        @music_albums << MusicAlbum.new(data['on_spotify'], data['publish_date'])
+      when 'Movie'
+        @movies << Movie.new(data['silent'], data['publish_date'])
       end
+      create_associations(data)
     end
   end
 
-  def load_authors
-    return unless File.file?('authors.json')
+  def create_associations(data, item)
+    @labels << Label.new(data['label']['title'], data['label']['color'])
+    @labels.last.add_item(item)
+    @authors << Author.new(data['author']['first_name'], data['author']['last_name'])
+    @authors.last.add_item(item)
+    @genres << Genre.new(data['genre']['name'])
+    @genres.last.add_item(item)
+    @sources << Source.new(data['source']['name'])
+    @sources.last.add_item(item)
+  end
 
-    f = File.new('authors.json', 'r')
-    f.readlines.each do |author|
-      data = JSON.parse(author)
-      @authors << Author.new(data['first_name'], data['last_name'])
-      data['items'].each do |item|
-        @games << Game.new(item['multiplayer'], item['last_played_at'], item['publish_date'])
-        @authors.last.add_item(@games.last)
-      end
+  def load_books
+    return unless File.file?('books.json')
+
+    f = File.new('books.json', 'r')
+    f.readlines.each do |book|
+      data = JSON.parse(book)
+      @books << Book.new(data['publisher'], data['cover_state'], data['publish_date'])
+      create_associations(data, @books.last)
     end
   end
 
-  def load_genres
-    return unless File.file?('genres.json')
+  def load_games
+    return unless File.file?('games.json')
 
-    f = File.new('genres.json', 'r')
-    f.readlines.each do |genre|
-      data = JSON.parse(genre)
-      @genres << Genre.new(data['name'])
-      data['items'].each do |item|
-        @music_albums << MusicAlbum.new(item['on_spotify'], item['publish_date'])
-        @genres.last.add_item(@music_albums.last)
-      end
+    f = File.new('games.json', 'r')
+    f.readlines.each do |game|
+      data = JSON.parse(game)
+      @games << Game.new(data['multiplayer'], data['last_played_at'], data['publish_date'])
+      create_associations(data, @games.last)
     end
   end
 
-  def load_sources
-    return unless File.file?('sources.json')
+  def load_music_albums
+    return unless File.file?('music_albums.json')
 
-    f = File.new('sources.json', 'r')
-    f.readlines.each do |source|
-      data = JSON.parse(source)
-      @sources << Source.new(data['name'])
-      data['items'].each do |item|
-        @movies << Movie.new(item['silent'], item['publish_date'])
-        @sources.last.add_item(@movies.last)
-      end
+    f = File.new('music_albums.json', 'r')
+    f.readlines.each do |album|
+      data = JSON.parse(album)
+      @music_albums << MusicAlbum.new(data['on_spotify'], data['publish_date'])
+      create_associations(data, @music_albums.last)
+    end
+  end
+
+  def load_movies
+    return unless File.file?('movies.json')
+
+    f = File.new('movies.json', 'r')
+    f.readlines.each do |movie|
+      data = JSON.parse(movie)
+      @movies << Movie.new(data['silent'], data['publish_date'])
+      create_associations(data, @movies.last)
     end
   end
 
   def store_data
     puts 'Saving data to local files...'.blue
     pause
-    f = File.new('labels.json', 'w')
-    @labels.each { |label| f.puts(label.to_json) }
+    f = File.new('books.json', 'w')
+    @books.each { |book| f.puts(book.to_json) }
     f.close
-    f = File.new('authors.json', 'w')
-    @authors.each { |author| f.puts(author.to_json) }
+    f = File.new('games.json', 'w')
+    @games.each { |game| f.puts(game.to_json) }
     f.close
-    f = File.new('genres.json', 'w')
-    @genres.each { |genre| f.puts(genre.to_json) }
+    f = File.new('music_albums.json', 'w')
+    @music_albums.each { |album| f.puts(album.to_json) }
     f.close
-    f = File.new('sources.json', 'w')
-    @sources.each { |source| f.puts(source.to_json) }
+    f = File.new('movies.json', 'w')
+    @movies.each { |movie| f.puts(movie.to_json) }
     f.close
     puts 'Data saved successfully!'.green
     pause(1)

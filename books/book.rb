@@ -15,7 +15,11 @@ class Book < Item
       JSON.create_id => self.class.name,
       'publisher' => @publisher,
       'cover_state' => @cover_state,
-      'publish_date' => @publish_date
+      'publish_date' => @publish_date,
+      'label' => @label,
+      'author' => @author,
+      'genre' => @genre,
+      'source' => @source
     }.to_json(*args)
   end
 

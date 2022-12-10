@@ -49,16 +49,28 @@ def process_input
   pause
 end
 
+def get_all_info
+  puts 'Terrific! Let\'s associate a label to this item!'
+  title = add_label_title
+  color = add_label_color
+  puts 'Wonderful! Let\'s associate an author to this item!'
+  first_name = add_author_first_name
+  last_name = add_author_last_name
+  puts 'Outstanding! Let\'s associate a genre to this item!'
+  genre_name = add_genre_name
+  puts 'Excellent! Let\'s associate a source to this item!'
+  source_name = add_source_name
+
+  [title, color, first_name, last_name, genre_name, source_name]
+end
+
 def add_book
   clear_terminal
   publisher = add_book_publisher
   cover_state = add_book_cover_state
   publish_date = add_book_publish_date
-  puts 'Terrific! Let\'s associate a label to this book!'
-  title = add_label_title
-  color = add_label_color
 
-  [publisher, cover_state, publish_date, title, color]
+  [publisher, cover_state, publish_date, *get_all_info]
 end
 
 def add_game
@@ -66,31 +78,24 @@ def add_game
   multiplayer = add_game_multiplayer
   last_played_at = add_game_last_played_at
   publish_date = add_game_publish_date
-  puts 'Terrific! Let\'s associate an author to this game!'
-  first_name = add_author_first_name
-  last_name = add_author_last_name
 
-  [multiplayer, last_played_at, publish_date, first_name, last_name]
+  [multiplayer, last_played_at, publish_date, *get_all_info]
 end
 
 def add_music_album
   clear_terminal
   on_spotify = add_music_album_on_spotify
   publish_date = add_music_album_publish_date
-  puts 'Terrific! Let\'s associate a genre to this music album!'
-  name = add_genre_name
 
-  [on_spotify, publish_date, name]
+  [on_spotify, publish_date, *get_all_info]
 end
 
 def add_movie
   clear_terminal
   silent = add_movie_silent
   publish_date = add_movie_publish_date
-  puts 'Terrific! Let\'s associate a source to this movie!'
-  name = add_source_name
 
-  [silent, publish_date, name]
+  [silent, publish_date, *get_all_info]
 end
 
 def main(status)
