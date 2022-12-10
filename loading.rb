@@ -98,7 +98,7 @@ class Loading
 
   def store_data
     puts 'Saving data to local files...'.blue
-    pause
+    pause(2)
     f = File.new('books.json', 'w')
     @books.each { |book| f.puts(book.to_json) }
     f.close
