@@ -41,12 +41,12 @@ def process_input
     @app.add_movie(*add_movie) if actions[option] == 'add_movie'
     @app.public_send(actions[option]) unless %w[add_book add_game add_music_album
                                                 add_movie].include?(actions[option])
-    pause
+    pause(2)
     return
   end
 
   puts 'I don\'t know how to handle your choice. Try choosing again!'.red
-  pause
+  pause(2)
 end
 
 def get_all_info

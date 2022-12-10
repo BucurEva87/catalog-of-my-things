@@ -165,7 +165,7 @@ class App
   def quit_app
     @loading.store_data
     puts 'I bid you farewell!'
-    pause
+    pause(2)
     clear_terminal
     exit(true)
   end
